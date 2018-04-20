@@ -2,14 +2,13 @@ package main
 
 /*
 This code was found from here: https://github.com/AlekSi/cgo-by-example/blob/master/main.go
-The main purpose of this file is for us to play around with calling 
+The purpose of this file is for us to play around with calling
 C from Go and seeing what the process is like
 */
 
-
 /*
 #include "lib/lib.h"
-#include <stdlib.h>      
+#include <stdlib.h>
 #cgo LDFLAGS: -L. -llib
 // simple wrapper, see below
 void call_f5_with_f1(void) {
