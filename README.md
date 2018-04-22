@@ -1,6 +1,15 @@
 # pl-interoperability
 Comparing the interoperability of Golang with C/C++ and Python with C/C++
 
+### Benchmarks to test
+- Generate different DNA sequences: https://github.com/greensoftwarelab/Energy-Languages
+- Calculate spectral-norm
+- Matrix Multiplication: https://github.com/kostya/benchmarks
+- polynomial computing: http://dan.corlan.net/bench.html
+- regex-benchmark: https://github.com/mariomka/regex-benchmark
+
+Benchmark these tests in: Go, Python, CGo, CPython and compare results.
+
 ### Golang
 Benefits of using Golang?
 - Very fast compile time
