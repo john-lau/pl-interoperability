@@ -1,6 +1,19 @@
 # pl-interoperability
 Comparing the interoperability of Golang with C/C++ and Python with C/C++
 
+### Benchmarks to test
+- Generate different DNA sequences: https://github.com/greensoftwarelab/Energy-Languages JOHN
+- Calculate spectral-norm REY
+- Matrix Multiplication: https://github.com/kostya/benchmarks JOHN
+- polynomial computing: http://dan.corlan.net/bench.html REY
+- regex-benchmark: https://github.com/mariomka/regex-benchmark JOHN & REY
+
+Benchmark these tests in: Go, CPython, CGo, CPython w/ C extensions and compare results.
+- time
+- memory
+- cpu
+
+
 ### Golang
 Benefits of using Golang?
 - Very fast compile time
@@ -9,21 +22,15 @@ Benefits of using Golang?
 - Extremely scalable: Go is built out of asynchronous tasks with message passing 
 - Overall sort of like a low-level language with high-level syntax 
 
-
-
 ### Golang with C
-
 cgo command
 - Enables for the creation of Go packages that call C code
 - Generate code to access C library functions and global variables
 - Go's solution for integration with exiting software, infrastructure, and protocols
 
-
 Points of interest to investigate
 - Go is a garbage collected runtime while C is not. Passing data must be done carefully
 - Call overhead: compare function call overhead differences between just Go vs CGo
-
-
 
 ### CPython3 with C
 - CPython itself is written in C so there is a Python API that allows access to most aspects of Python's runtime system
