@@ -1,12 +1,17 @@
 #include "testmodule.h"
 
-char testfunc_docs[] = "This are test functions";
+char testfunc_docs[] = "Prints out test";
+char addfunc_docs[] = "This is a simple add function";
 
 PyMethodDef test_funcs[] = {
 	{	"test",
 		(PyCFunction)test,
 		METH_NOARGS,
 		testfunc_docs},
+	{	"add",
+		(PyCFunction)add,
+		METH_VARARGS,
+		addfunc_docs},
 	{	NULL}
 };
 

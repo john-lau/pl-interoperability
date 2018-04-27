@@ -4,5 +4,6 @@
 #include <Python.h>
 
 PyObject * test(PyObject *);
+PyObject * add(PyObject *, PyObject *);
 
 #endif
