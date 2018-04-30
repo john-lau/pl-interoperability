@@ -5,5 +5,6 @@
 
 PyObject * test(PyObject *);
 PyObject * add(PyObject *, PyObject *);
+PyObject * modList(PyObject *, PyObject *);
 
 #endif

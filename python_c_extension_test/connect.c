@@ -2,6 +2,7 @@
 
 char testfunc_docs[] = "Prints out test";
 char addfunc_docs[] = "This is a simple add function";
+char modlistfunc_docs[] = "Checking to see if we can modify a python list in C";
 
 PyMethodDef test_funcs[] = {
 	{	"test",
@@ -12,6 +13,10 @@ PyMethodDef test_funcs[] = {
 		(PyCFunction)add,
 		METH_VARARGS,
 		addfunc_docs},
+	{	"modList",
+		(PyCFunction)modList,
+		METH_VARARGS,
+		modlistfunc_docs},
 	{	NULL}
 };
 

@@ -8,7 +8,7 @@ def eval_A (i, j):
     return 1.0 / (((i + j) * (i + j + 1) >> 1) + i + 1)
 
 def eval_A_times_u (u, resulted_list):
-    u_len = len (u)
+    u_len = len(u)
     local_eval_A = eval_A
 
     for i in xrange (u_len):
@@ -47,12 +47,12 @@ def main():
     local_eval_AtA_times_u = eval_AtA_times_u
 
     for dummy in xrange (10):
-        local_eval_AtA_times_u (u, v, tmp)
-        local_eval_AtA_times_u (v, u, tmp)
+        local_eval_AtA_times_u(u, v, tmp)
+        local_eval_AtA_times_u(v, u, tmp)
 
     vBv = vv = 0
 
-    for ue, ve in zip (u, v):
+    for ue, ve in zip(u, v):
         vBv += ue * ve
         vv  += ve * ve
 
