@@ -34,13 +34,11 @@ def main(argv):
     a = build_matrix(n)
     b = build_matrix(n)
 
-    d = build_matrix(n)
-
     #implement matmul in C and call that.
-    # d = matmul(n, a, b)
 
-    matmul(n, a, b, d)
-    print d[n // 2][n // 2]
+    result = matmul(n, a, b)
+
+    print result
 
 
 if __name__ == "__main__":

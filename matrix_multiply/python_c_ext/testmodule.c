@@ -7,13 +7,23 @@ void mm_destroy(int n, double **m) {
   free(m);
 }
 
-double **mm_mul(int n, double *const *a, double *const *b, double *const *d) {
-  int i, j, k;
-  // double **m, **c;
-  double **c;
 
-  // m = mm_init(n); c = mm_init(n);
-  c = mm_init(n);
+double **matrix_init(int n) {
+  double **m;
+  int i;
+
+  m = (double**)malloc(n * sizeof(void*));
+  for (i = 0; i < n; ++i)
+    m[i] = calloc(n, sizeof(double));
+  return m;
+}
+
+
+double **mm_mul(int n, double *const *a, double *const *b) {
+  int i, j, k;
+  double **m, **c;
+
+  m = mm_init(n); c = mm_init(n);
 
   for (i = 0; i < n; ++i) // transpose
     for (j = 0; j < n; ++j)
@@ -27,18 +37,10 @@ double **mm_mul(int n, double *const *a, double *const *b, double *const *d) {
       q[j] = t;
     }
   }
-  mm_destroy(n, c);
-}
-
-double **matrix_init(int n) {
-  double **m;
-  int i;
-
-  m = (double**)malloc(n * sizeof(void*));
-  for (i = 0; i < n; ++i)
-    m[i] = calloc(n, sizeof(double));
+  mm_destroy(n, c); 
   return m;
 }
+
 
 void convert_matrix(**double c_matrix, PyObject *python_matrix) {
   PyObject *matrix_iter = PyObject_GetIter(python_matrix);
@@ -80,7 +82,6 @@ void convert_matrix(**double c_matrix, PyObject *python_matrix) {
   }
 }
 
-// Need to create a 3rd argument matrix, the one that carries the result.
 
 PyObject *matumul(PyObject *self, PyObject *args) {
 
@@ -88,9 +89,8 @@ PyObject *matumul(PyObject *self, PyObject *args) {
   int N;
   PyObject *a;
   PyObject *b;
-  PyObject *d;
 
-  if (!PyArg_ParseTuple(args, "i00", &N, &a, &b, &d)) {
+  if (!PyArg_ParseTuple(args, "i00", &N, &a, &b)) {
     PyErr_SetString(PyExc_TypeError, "parameters incorrect");
     return NULL;
   }
@@ -103,17 +103,18 @@ PyObject *matumul(PyObject *self, PyObject *args) {
   //need to allocate space for the matrix
   a_matrix = matrix_init(N);
   b_matrix = matrix_init(N);
-  d_matrix = matrix_init(N);
 
   convert_matrix(a_matrix, a);
   convert_matrix(b_matrix, b);
-  convert_matrix(d_matrix, d);
+
 
   // we want to put the result in matrix d instead, so we dont have to return anything in our function... 
-  mm_mul(N, a, b, d);
+  result_matrix = mm_mul(N, a, b);
 
+  double result = result_matrix[N/2][N/2];
 
-  Py_RETURN_NONE;
+  return PyFload_FromDouble(result);
+
 }
 
 
