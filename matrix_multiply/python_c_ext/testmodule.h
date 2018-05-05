@@ -6,7 +6,7 @@
 void mm_destroy(int n, double **m);
 double **matrix_init(int n);
 double **mm_mul(int n, double *const *a, double *const *b);
-void convert_matrix(**double c_matrix, PyObject *python_matrix);
-PyObject * matumul(PyObject *self, PyObject *args);
+double  **convert_matrix(int N, double **c_matrix, PyObject *python_matrix);
+PyObject * matmul(PyObject *self, PyObject *args);
 
 #endif

@@ -1,5 +1,6 @@
 import array
 import sys
+import testmodule
 xrange = range
 
 def matmul(a, b):
@@ -34,11 +35,9 @@ def main(argv):
     a = build_matrix(n)
     b = build_matrix(n)
 
-    #implement matmul in C and call that.
+    result = testmodule.matmul(n, a, b)
 
-    result = matmul(n, a, b)
-
-    print result
+    print(result)
 
 
 if __name__ == "__main__":

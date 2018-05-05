@@ -1,12 +1,12 @@
 #include "testmodule.h"
 
-char matumul_u_func_docs[] = "Prints out test";
+char matmul_u_func_docs[] = "Prints out test";
 
 PyMethodDef test_funcs[] = {
-	{	"matumul",
-		(PyCFunction)matumul,
+	{	"matmul",
+		(PyCFunction)matmul,
 		METH_VARARGS,
-		matumul_u_func_docs},
+		matmul_u_func_docs},
 	{	NULL}
 };
 
