@@ -37,12 +37,12 @@ double **mm_mul(int n, double *const *a, double *const *b) {
       q[j] = t;
     }
   }
-  mm_destroy(n, c); 
+  mm_destroy(n, c);
   return m;
 }
 
 
-double **convert_matrix(int N, double **c_matrix, PyObject *python_matrix) {
+double **convert_matrix(const int N, double **c_matrix, PyObject *python_matrix) {
   c_matrix = matrix_init(N);
 
   PyObject *matrix_iter = PyObject_GetIter(python_matrix);
@@ -56,11 +56,11 @@ double **convert_matrix(int N, double **c_matrix, PyObject *python_matrix) {
 
   while (matrix_next) { //matrix_iter: 1 for each list, we need another iter to go into each individual list
 
-    PyObject *row_iter = PyObject_GetIter(matrix_iter);
+    PyObject *row_iter = PyObject_GetIter(matrix_next);
 
     if (!row_iter) {
-    PyErr_SetString(PyExc_TypeError, "row iterator error");
-    return NULL;
+      PyErr_SetString(PyExc_TypeError, "row iterator error");
+      return NULL;
     }
 
     int j = 0;
@@ -68,15 +68,14 @@ double **convert_matrix(int N, double **c_matrix, PyObject *python_matrix) {
     while (row_next) { //now we are in a specific row of the matrix.
 
       if (!PyFloat_Check(row_next)) {
-      PyErr_SetString(PyExc_TypeError, "expected a float");
-      return NULL;
+        PyErr_SetString(PyExc_TypeError, "expected a float");
+        return NULL;
       }
 
       double index_val = PyFloat_AsDouble(row_next);
       c_matrix[i][j] = index_val;
       row_next = PyIter_Next(row_iter);
       j++;
-
     }
 
     //move on to the next row of the matrix, increment i
@@ -103,16 +102,14 @@ PyObject *matmul(PyObject *self, PyObject *args) {
 
   double **a_matrix = NULL;
   double **b_matrix = NULL;
-  double **result_matrix;
+  double **result_matrix = NULL;
 
   //need to allocate space for the matrix
   // a_matrix = matrix_init(N);
   // b_matrix = matrix_init(N);
 
-
-  convert_matrix(N, a_matrix, a);
-  convert_matrix(N, b_matrix, b);
-
+  a_matrix = convert_matrix(N, a_matrix, a);
+  b_matrix = convert_matrix(N, b_matrix, b);
 
   // we want to put the result in matrix d instead, so we dont have to return anything in our function... 
   result_matrix = mm_mul(N, a_matrix, b_matrix);

@@ -21,7 +21,7 @@ def matmul(a, b):
 
 def build_matrix(n):
     t = 1.0 / n / n
-    m = [array.array("d", [0.0]) * n for _ in xrange(n)]
+    m = [[0.0] * n for _ in xrange(n)]
     for i in xrange(n):
         for j in xrange(n):
             m[i][j] = t * (i - j) * (i + j)
@@ -34,6 +34,8 @@ def main(argv):
 
     a = build_matrix(n)
     b = build_matrix(n)
+    # print(a)
+    # print(b)
 
     result = testmodule.matmul(n, a, b)
 
