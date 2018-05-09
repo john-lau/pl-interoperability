@@ -2,16 +2,20 @@
 Comparing the interoperability of Golang with C/C++ and Python with C/C++
 
 ### Benchmarks to test
-- Generate different DNA sequences: https://github.com/greensoftwarelab/Energy-Languages JOHN
-- Calculate spectral-norm REY
-- Matrix Multiplication: https://github.com/kostya/benchmarks JOHN
-- polynomial computing: http://dan.corlan.net/bench.html REY
-- regex-benchmark: https://github.com/mariomka/regex-benchmark JOHN & REY
+- Generate different DNA sequences
+- Calculate spectral-norm
+- Matrix Multiplication
+- polynomial computing
+- regex-benchmark
 
 Benchmark these tests in: Go, CPython, CGo, CPython w/ C extensions and compare results.
-- time
-- memory
+- time - built in tools for python and golang
+- memory 
+  - python: guppy
+  - golang: pprof https://golang.org/pkg/runtime/pprof/#StartCPUProfile
 - cpu
+  - python: ???
+  - golang: pprof https://golang.org/pkg/runtime/pprof/#StartCPUProfile
 
 
 ### Golang
