@@ -1,3 +1,5 @@
+//usr/bin/env go run "$0" "$@"; exit
+
 package main
 
 /*
@@ -47,4 +49,3 @@ func main() {
 	}
 	fmt.Printf("%0.9f\n", math.Sqrt(vBv/vv))
 }
-

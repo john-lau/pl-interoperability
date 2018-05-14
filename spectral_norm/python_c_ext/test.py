@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from array import array
 from math import sqrt
 from sys import argv
