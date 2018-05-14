@@ -9,10 +9,8 @@ Comparing the interoperability of Golang with C/C++ and Python with C/C++
 - regex-benchmark
 
 Benchmark these tests in: Go, CPython, CGo, CPython w/ C extensions and compare results.
-- time - built in tools for python and golang
-- memory 
-  - python: guppy
-  - golang: pprof https://golang.org/pkg/runtime/pprof/#StartCPUProfile
+- time: Ruby script
+- memory: Ruby script
 - cpu
   - python: ???
   - golang: pprof https://golang.org/pkg/runtime/pprof/#StartCPUProfile
