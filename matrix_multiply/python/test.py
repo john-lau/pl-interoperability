@@ -35,7 +35,7 @@ def main(argv):
     b = build_matrix(n)
 
     d = matmul(a, b)
-    print d[n // 2][n // 2]
+    print (d[n // 2][n // 2])
 
 
 if __name__ == "__main__":
