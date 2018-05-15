@@ -3,15 +3,6 @@ import random
 import testmodule
 import sys
 
-# def convert_list_to_array(lll):
-#         intarraytype=c_int*len(lll)
-#         intarray=intarraytype()
-#         index=0
-#         for l in lll:
-#                 intarray[int(index)]=int(l)
-#                 index=index+1
-#         return intarray
-
 def py_sort(iarray,length):
         for i in range(length):
                 for j in range(i,length):
