@@ -3,14 +3,14 @@ import random
 import testmodule
 import sys
 
-def convert_list_to_array(lll):
-        intarraytype=c_int*len(lll)
-        intarray=intarraytype()
-        index=0
-        for l in lll:
-                intarray[int(index)]=int(l)
-                index=index+1
-        return intarray
+# def convert_list_to_array(lll):
+#         intarraytype=c_int*len(lll)
+#         intarray=intarraytype()
+#         index=0
+#         for l in lll:
+#                 intarray[int(index)]=int(l)
+#                 index=index+1
+#         return intarray
 
 def py_sort(iarray,length):
         for i in range(length):
@@ -29,12 +29,15 @@ def main(argv):
 
         lr= random.sample(range(10000000),sample_size)
 
-        # iarray = convert_list_to_array(lr)
+        # lr = [3,4,7,1,2,0,18,14]
+
+        # for item in lr:
+        #     print(item)
 
         # Call C function here
         testmodule.c_sort(sample_size, lr)
 
-        py_sort(lr, len(lr))
+        # py_sort(lr, len(lr))
         print("finished sorting array")
 
 if __name__ == "__main__":

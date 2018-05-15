@@ -40,14 +40,25 @@ PyObject * c_sort(PyObject *self, PyObject *args) {
 	PyObject *next = PyIter_Next(iter);
 
 	while(next) {
-		// if (!PyFloat_Check(next)) {
-		// 	PyErr_SetString(PyExc_TypeError, "expected an int");
-		// 	return NULL;
-		// }
-		int foo = (int) next;
+		if (!PyLong_Check(next)) {
+			PyErr_SetString(PyExc_TypeError, "expected an int");
+			return NULL;
+		}
+
+		int foo = (int)PyLong_AsDouble(next);
 		c_list[i] = foo;
+		printf("%d\n", foo);
 		next = PyIter_Next(iter);
 		i++;
+	}
+
+	sort(c_list, n);
+
+	printf("sorted list:\n");
+
+	for(int i = 0; i < n; i++) {
+		int value = c_list[i];
+		printf("%d\n", value);
 	}
 
 	return Py_BuildValue("i", 1);
