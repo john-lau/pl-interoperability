@@ -7,47 +7,10 @@ import testmodule
 import sys
 xrange = range
 
-# def eval_A (i, j):
-#     return 1.0 / (((i + j) * (i + j + 1) >> 1) + i + 1)
-
-# def eval_A_times_u (u, resulted_list):
-#     u_len = len(u)
-#     local_eval_A = eval_A
-
-#     for i in xrange (u_len):
-#         partial_sum = 0
-
-#         j = 0
-#         while j < u_len:
-#             partial_sum += local_eval_A (i, j) * u[j]
-#             j += 1
-
-#         resulted_list[i] = partial_sum
-
-# def eval_At_times_u (u, resulted_list):
-#     u_len = len (u)
-#     local_eval_A = eval_A
-
-#     for i in xrange (u_len):
-#         partial_sum = 0
-
-#         j = 0
-#         while j < u_len:
-#             partial_sum += local_eval_A (j, i) * u[j]
-#             j += 1
-
-#         resulted_list[i] = partial_sum
-
-# def eval_AtA_times_u (u, out, tmp):
-#     eval_A_times_u (u, tmp)
-#     eval_At_times_u (tmp, out)
-
 def main():
     n = int(argv[1])
     u = [1.0] * n
     v = [1.0] * n
-    # tmp = array("d", [1]) * n
-    # local_eval_AtA_times_u = eval_AtA_times_u
 
     for dummy in xrange (10):
         testmodule.eval_AtA_times_u(n, u, v)

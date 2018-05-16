@@ -43,8 +43,7 @@ float matmul(int n, float *const *a, float *const *b) {
 		}
 	}
 	mm_destroy(n, c);
-	// return m;
-
+	
 	float result = m[n/2][n/2];
 	return result;
 }

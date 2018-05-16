@@ -99,22 +99,21 @@ PyObject *matmul(PyObject *self, PyObject *args) {
     return NULL;
   }
 
-
   double **a_matrix = NULL;
   double **b_matrix = NULL;
   double **result_matrix = NULL;
-
-  //need to allocate space for the matrix
-  // a_matrix = matrix_init(N);
-  // b_matrix = matrix_init(N);
 
   a_matrix = convert_matrix(N, a_matrix, a);
   b_matrix = convert_matrix(N, b_matrix, b);
 
   // we want to put the result in matrix d instead, so we dont have to return anything in our function... 
   result_matrix = mm_mul(N, a_matrix, b_matrix);
-
   double result = result_matrix[N/2][N/2];
+
+  // free allocated memory
+  mm_destroy(N, a_matrix);
+  mm_destroy(N, b_matrix);
+  mm_destroy(N, result_matrix);
 
   return PyFloat_FromDouble(result);
 

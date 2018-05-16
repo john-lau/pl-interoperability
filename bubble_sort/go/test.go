@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"algoutils"
 )
 
 func swap(arrayzor []int, i, j int) {
@@ -18,7 +17,7 @@ func bubbleSort(arrayzor []int) {
 		swapped = false
 		for i := 0; i < len(arrayzor) - 1; i++ {
 			if arrayzor[i + 1] < arrayzor[i] {
-				algoutils.Swap(arrayzor, i, i + 1)
+				swap(arrayzor, i, i + 1)
 				swapped = true
 			}
 		}

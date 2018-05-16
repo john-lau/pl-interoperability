@@ -18,7 +18,7 @@ import (
 
 func matgen(n int) [][]float64 {
 	a := make([][]float64, n)
-	tmp := float64(1.0) / float64(n) / float64(n) //this is not the smartest
+	tmp := float64(1.0) / float64(n) / float64(n)
 	for i := 0; i < n; i++ {
 		a[i] = make([]float64, n)
 		for j := 0; j < n; j++ {
@@ -93,9 +93,6 @@ func main() {
 	}
 
 	result := C.matmul(N, (&a_matrix[0]), (&b_matrix[0]))
-
-	// x := matmul(a, b)
-	// fmt.Printf("%f\n", x[n/2][n/2])
 
 	fmt.Printf("%f\n", result)
 

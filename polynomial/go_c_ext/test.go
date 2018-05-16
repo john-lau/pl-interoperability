@@ -14,22 +14,6 @@ import (
 	"strconv"
 )
 
-// type Vec []float64
-
-// func poly(x float64) float64 {
-//   mu := 10.0
-//   pol := make(Vec, 100)
-//   for i := 0; i < 100; i++ {
-//     mu = (mu + 2.0)/2.0
-//     pol[i] = (mu + 2.0)/2.0
-//   }
-//   su := 0.0
-//   for i := 0; i < 100; i++ {
-//     su = x*su + pol[i]
-//   }
-//   return su
-// }
-
 func main() {
 	flag.Parse()
 	n, _ := strconv.Atoi(flag.Arg(0))

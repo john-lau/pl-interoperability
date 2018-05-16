@@ -39,8 +39,6 @@ func main() {
 	for i := 0; i < 10; i++ {
 		C.eval_AtA_times_u(N, (*C.double)(u), (*C.double)(v))
 		C.eval_AtA_times_u(N, (*C.double)(v), (*C.double)(u))
-		// v.ATimesTransp(u)
-		// u.ATimesTransp(v)
 	}
 	var vBv, vv float64
 	for i := 0; i < n; i++ {
