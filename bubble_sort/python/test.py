@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from ctypes import *
 import random
 import sys
