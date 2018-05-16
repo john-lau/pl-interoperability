@@ -41,7 +41,7 @@ void eval_At_times_u(int N, const double u[], PyObject *Au) {
     i++;
   }
 }
-/* void eval_AtA_times_u_helper(PyObject *, PyObject *); */
+
 PyObject * eval_AtA_times_u(PyObject *self, PyObject *args) {
   int N;
   PyObject *u_obj;
