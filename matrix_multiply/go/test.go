@@ -5,6 +5,7 @@ package main
 import (
 	"fmt"
 	"flag"
+	"github.com/pkg/profile"
 	"strconv"
 )
 
@@ -46,6 +47,8 @@ func matmul(a [][]float64, b [][]float64) [][]float64 {
 }
 
 func main() {
+	// CPU profiling by default
+	defer profile.Start(profile.MemProfile).Stop()
 	n := int(100)
 	flag.Parse()
 	if flag.NArg() > 0 {
