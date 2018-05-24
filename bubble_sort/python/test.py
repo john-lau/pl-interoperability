@@ -4,14 +4,14 @@ from ctypes import *
 import random
 import sys
 
-def convert_list_to_array(lll):
-        intarraytype=c_int*len(lll)
-        intarray=intarraytype()
-        index=0
-        for l in lll:
-                intarray[int(index)]=int(l)
-                index=index+1
-        return intarray
+# def convert_list_to_array(lll):
+#         intarraytype=c_int*len(lll)
+#         intarray=intarraytype()
+#         index=0
+#         for l in lll:
+#                 intarray[int(index)]=int(l)
+#                 index=index+1
+#         return intarray
 
 def py_sort(iarray,length):
         for i in range(length):
@@ -29,10 +29,14 @@ def main(argv):
         sample_size=int(sys.argv[1])
 
         lr= random.sample(range(10000000),sample_size)
-        iarray = convert_list_to_array(lr)
 
-        py_sort(iarray, len(lr))
+        # iarray = convert_list_to_array(lr)
+
+        # print(lr)
+        py_sort(lr, len(lr))
         print("finished sorting array")
+
+        # print(lr)
 
 if __name__ == "__main__":
     main(sys.argv)

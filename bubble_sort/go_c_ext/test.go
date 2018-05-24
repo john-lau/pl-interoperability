@@ -12,6 +12,7 @@ import "C"
 import (
 	"flag"
 	"fmt"
+	"github.com/pkg/profile"
 	"math/rand"
 	"strconv"
 	"unsafe"
@@ -47,6 +48,8 @@ func rangeInt(min int, max int, n int) []int {
 }
 
 func main() {
+	// CPU profiling by default
+	defer profile.Start(profile.MemProfile).Stop()
 	// arrayzor := []int{1, 6, 2, 4, 9, 0, 5, 3, 7, 8}
 
 	//generate random array

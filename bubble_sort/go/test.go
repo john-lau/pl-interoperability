@@ -3,7 +3,11 @@
 package main
 
 import (
+	"flag"
 	"fmt"
+	"github.com/pkg/profile"
+	"math/rand"
+	"strconv"
 )
 
 func swap(arrayzor []int, i, j int) {
@@ -26,9 +30,30 @@ func bubbleSort(arrayzor []int) {
 	}	
 }
 
-func main() {
+func rangeInt(min int, max int, n int) []int {
+	arr := make([]int, n)
+	var r int
+	for r = 0; r <= n-1; r++ {
+		arr[r] = rand.Intn(max) + min
+	}
+	return arr
+}
 
-	arrayzor := []int{1, 6, 2, 4, 9, 0, 5, 3, 7, 8}
+func main() {
+	// CPU profiling by default
+	defer profile.Start(profile.MemProfile).Stop()
+
+	// arrayzor := []int{1, 6, 2, 4, 9, 0, 5, 3, 7, 8}
+
+	//generate random array
+	n := int(100)
+	flag.Parse()
+	if flag.NArg() > 0 {
+		n, _ = strconv.Atoi(flag.Arg(0))
+	}
+
+	arrayzor := rangeInt(0, 1000, n)
+
 	fmt.Println("Unsorted array: ", arrayzor)
 	bubbleSort(arrayzor)
 	fmt.Println("Sorted array: ", arrayzor)

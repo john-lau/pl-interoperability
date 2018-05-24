@@ -5,6 +5,7 @@ package main
 import (
    "flag"
    "fmt"
+   "github.com/pkg/profile"
    "math"
    "strconv"
 )
@@ -41,6 +42,8 @@ func (v Vec) ATimesTransp(u Vec) {
 }
 
 func main() {
+   // CPU profiling by default
+   defer profile.Start(profile.MemProfile).Stop()
    flag.Parse()
    if flag.NArg() > 0 {
       n, _ = strconv.Atoi(flag.Arg(0))

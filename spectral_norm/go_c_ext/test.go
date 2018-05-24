@@ -12,12 +12,15 @@ import "C"
 import (
 	"flag"
 	"fmt"
+	"github.com/pkg/profile"
 	"math"
 	"strconv"
 	"unsafe"
 )
 
 func main() {
+	// CPU profiling by default
+	defer profile.Start(profile.MemProfile).Stop()
 	flag.Parse()
 	n := 10
 	if flag.NArg() > 0 {

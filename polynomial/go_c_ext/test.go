@@ -11,10 +11,13 @@ import "C"
 import (
 	"flag"
 	"fmt"
+	"github.com/pkg/profile"
 	"strconv"
 )
 
 func main() {
+	// CPU profiling by default
+	defer profile.Start(profile.MemProfile).Stop()
 	flag.Parse()
 	n, _ := strconv.Atoi(flag.Arg(0))
 	x, _ := strconv.ParseFloat(flag.Arg(1), 64)
