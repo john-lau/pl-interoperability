@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 
 def mem(pid); `ps p #{pid} -o rss`.split.last.to_i; end
-def cpu(pid); `ps p #{pid} -o cpu`.split.last.to_i; end
+def cpu(pid); `ps p #{pid} -o pcpu`.split.last.to_i; end
+
 t = Time.now
 pid = Process.spawn(*ARGV.to_a, '1000')
 mem_arr = []
@@ -14,7 +15,7 @@ Thread.new do
     sleep 0.1
     m = mem(pid)
     mem_arr << m
-    cpu = mem(pid)
+    cpu = cpu(pid)
     cpu_arr << cpu
     # mm = m if m > mm
     # mcpu = cpu if cpu > mcpu
