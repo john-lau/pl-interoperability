@@ -15,6 +15,7 @@ import (
 	"github.com/pkg/profile"
 	"math/rand"
 	"strconv"
+	"time"
 	"unsafe"
 )
 
@@ -48,6 +49,7 @@ func rangeInt(min int, max int, n int) []int {
 }
 
 func main() {
+	start := time.Now()
 	// CPU profiling by default
 	defer profile.Start(profile.MemProfile).Stop()
 	// arrayzor := []int{1, 6, 2, 4, 9, 0, 5, 3, 7, 8}
@@ -79,4 +81,6 @@ func main() {
 
 	// bubbleSort(arrayzor)
 	fmt.Println("Sorted array: ", arraySlice)
+
+	fmt.Println(time.Since(start))
 }

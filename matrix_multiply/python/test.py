@@ -2,6 +2,7 @@
 
 import array
 import sys
+import time
 xrange = range
 
 def matmul(a, b):
@@ -29,6 +30,7 @@ def build_matrix(n):
     return m
 
 def main(argv):
+    start_time = time.time()
     n = 100
     if len(sys.argv) > 1:
         n = int(sys.argv[1])
@@ -38,6 +40,8 @@ def main(argv):
 
     d = matmul(a, b)
     print (d[n // 2][n // 2])
+
+    print("--- %s seconds ---" % (time.time() - start_time))
 
 
 if __name__ == "__main__":

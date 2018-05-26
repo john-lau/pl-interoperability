@@ -7,6 +7,7 @@ import (
 	"flag"
 	"github.com/pkg/profile"
 	"strconv"
+	"time"
 )
 
 func matgen(n int) [][]float64 {
@@ -47,6 +48,7 @@ func matmul(a [][]float64, b [][]float64) [][]float64 {
 }
 
 func main() {
+	start := time.Now()
 	// CPU profiling by default
 	defer profile.Start(profile.MemProfile).Stop()
 	n := int(100)
@@ -58,4 +60,6 @@ func main() {
 	b := matgen(n)
 	x := matmul(a, b)
 	fmt.Printf("%f\n", x[n/2][n/2])
+
+	fmt.Println(time.Since(start))
 }

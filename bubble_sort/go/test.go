@@ -8,6 +8,7 @@ import (
 	"github.com/pkg/profile"
 	"math/rand"
 	"strconv"
+	"time"
 )
 
 func swap(arrayzor []int, i, j int) {
@@ -40,6 +41,7 @@ func rangeInt(min int, max int, n int) []int {
 }
 
 func main() {
+	start := time.Now()
 	// CPU profiling by default
 	defer profile.Start(profile.MemProfile).Stop()
 
@@ -57,4 +59,6 @@ func main() {
 	fmt.Println("Unsorted array: ", arrayzor)
 	bubbleSort(arrayzor)
 	fmt.Println("Sorted array: ", arrayzor)
+
+	fmt.Println(time.Since(start))
 }

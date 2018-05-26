@@ -3,6 +3,7 @@
 from ctypes import *
 import random
 import testmodule
+import time
 import sys
 
 def py_sort(iarray,length):
@@ -14,6 +15,7 @@ def py_sort(iarray,length):
                                 iarray[j]=tmp
 
 def main(argv):
+        start_time = time.time()
         n = 100
         if len(sys.argv) > 1:
                 n = int(sys.argv[1])
@@ -32,6 +34,8 @@ def main(argv):
 
         # py_sort(lr, len(lr))
         print("finished sorting array")
+
+        print("--- %s seconds ---" % (time.time() - start_time))
 
 if __name__ == "__main__":
     main(sys.argv)
