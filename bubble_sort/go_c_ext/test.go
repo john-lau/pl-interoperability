@@ -12,9 +12,9 @@ import "C"
 import (
 	"flag"
 	"fmt"
-	"github.com/pkg/profile"
 	"math/rand"
 	"strconv"
+	"time"
 	"unsafe"
 )
 
@@ -48,8 +48,9 @@ func rangeInt(min int, max int, n int) []int {
 }
 
 func main() {
+	start := time.Now()
 	// CPU profiling by default
-	defer profile.Start(profile.MemProfile).Stop()
+	// defer profile.Start(profile.MemProfile).Stop()
 	// arrayzor := []int{1, 6, 2, 4, 9, 0, 5, 3, 7, 8}
 
 	//generate random array
@@ -63,7 +64,7 @@ func main() {
 
 	goArray := rangeInt(0, 1000, n)
 
-	fmt.Println("Unsorted array: ", goArray)
+	// fmt.Println("Unsorted array: ", goArray)
 
 	// Create C array from golang array
 	cArray := (C.malloc(C.size_t(N) * C.size_t(unsafe.Sizeof(C.int(0)))))
@@ -78,5 +79,7 @@ func main() {
 	C.bubble_sort((*C.int)(cArray), N)
 
 	// bubbleSort(arrayzor)
-	fmt.Println("Sorted array: ", arraySlice)
+	// fmt.Println("Sorted array: ", arraySlice)
+
+	fmt.Println(time.Since(start))
 }

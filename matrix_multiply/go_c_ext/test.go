@@ -12,8 +12,8 @@ import "C"
 import (
 	"flag"
 	"fmt"
-	"github.com/pkg/profile"
 	"strconv"
+	"time"
 	"unsafe"
 )
 
@@ -55,8 +55,10 @@ func matmul(a [][]float64, b [][]float64) [][]float64 {
 }
 
 func main() {
+	start := time.Now()
+
 	// CPU profiling by default
-	defer profile.Start(profile.MemProfile).Stop()
+	// defer profile.Start(profile.MemProfile).Stop()
 	n := int(100)
 	flag.Parse()
 	if flag.NArg() > 0 {
@@ -95,8 +97,10 @@ func main() {
 		}
 	}
 
-	result := C.matmul(N, (&a_matrix[0]), (&b_matrix[0]))
+	C.matmul(N, (&a_matrix[0]), (&b_matrix[0]))
 
-	fmt.Printf("%f\n", result)
+	// fmt.Printf("%f\n", result)
+
+	fmt.Println(time.Since(start))
 
 }

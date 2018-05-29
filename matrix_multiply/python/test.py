@@ -2,6 +2,7 @@
 
 import array
 import sys
+import time
 xrange = range
 
 def matmul(a, b):
@@ -29,6 +30,7 @@ def build_matrix(n):
     return m
 
 def main(argv):
+    start_time = time.time()
     n = 100
     if len(sys.argv) > 1:
         n = int(sys.argv[1])
@@ -37,7 +39,13 @@ def main(argv):
     b = build_matrix(n)
 
     d = matmul(a, b)
-    print (d[n // 2][n // 2])
+    # print (d[n // 2][n // 2])
+
+    time_taken = time.time() - start_time
+
+    with open("mat_mul_python_1000.txt", "a") as text_file:
+        print("%s" % time_taken)
+        text_file.write(str(time_taken) + "\n")
 
 
 if __name__ == "__main__":

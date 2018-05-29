@@ -3,6 +3,7 @@
 from ctypes import *
 import random
 import testmodule
+import time
 import sys
 
 def py_sort(iarray,length):
@@ -14,6 +15,7 @@ def py_sort(iarray,length):
                                 iarray[j]=tmp
 
 def main(argv):
+        start_time = time.time()
         n = 100
         if len(sys.argv) > 1:
                 n = int(sys.argv[1])
@@ -31,7 +33,13 @@ def main(argv):
         testmodule.c_sort(sample_size, lr)
 
         # py_sort(lr, len(lr))
-        print("finished sorting array")
+        # print("finished sorting array")
+
+        time_taken = time.time() - start_time
+
+        with open("bubble_sort_python_c_ext_25000.txt", "a") as text_file:
+            print("%s" % time_taken)
+            text_file.write(str(time_taken) + "\n")
 
 if __name__ == "__main__":
     main(sys.argv)
