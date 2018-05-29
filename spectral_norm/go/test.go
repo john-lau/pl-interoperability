@@ -5,13 +5,25 @@ package main
 import (
    "flag"
    "fmt"
-   "github.com/pkg/profile"
-   "math"
+   // "github.com/pkg/profile"
+   // "math"
    "strconv"
+   // "time"
+   "runtime"
 )
 
 // var n = flag.Int("n", 2000, "count")
 var n = 0
+
+func PrintMemUsage() {
+  var m runtime.MemStats
+  runtime.ReadMemStats(&m)
+  // For info on each, see: https://golang.org/pkg/runtime/#MemStats
+  fmt.Printf("Alloc = %v MiB", bToMb(m.Alloc))
+  fmt.Printf("\tTotalAlloc = %v ", m.TotalAlloc)
+  fmt.Printf("\tSys = %v MiB", bToMb(m.Sys))
+  fmt.Printf("\tNumGC = %v\n", m.NumGC)
+}
 
 func evalA(i, j int) int { return ((i+j)*(i+j+1)/2 + i + 1) }
 
@@ -41,12 +53,19 @@ func (v Vec) ATimesTransp(u Vec) {
    v.TimesTransp(x)
 }
 
+func bToMb(b uint64) uint64 {
+  return b / 1024 / 1024
+}
+
 func main() {
    // CPU profiling by default
-   defer profile.Start(profile.MemProfile).Stop()
+   // defer profile.Start(profile.MemProfile).Stop()
+   // var m runtime.MemStats
+   // runtime.ReadMemStats(&m)
+   // start := time.Now()
    flag.Parse()
    if flag.NArg() > 0 {
-      n, _ = strconv.Atoi(flag.Arg(0))
+     n, _ = strconv.Atoi(flag.Arg(0))
    }
 
    N := n
@@ -63,6 +82,11 @@ func main() {
    for i := 0; i < N; i++ {
       vBv += u[i] * v[i]
       vv += v[i] * v[i]
+      // PrintMemUsage()
    }
-   fmt.Printf("%0.9f\n", math.Sqrt(vBv/vv))
+   // fmt.Println(float32(time.Since(start))/1000000000.0)
+   // fmt.Printf("%0.9f\n", math.Sqrt(vBv/vv))
+   var m runtime.MemStats
+   runtime.ReadMemStats(&m)
+   fmt.Println((m.Sys + m.TotalAlloc)/1024.0)
 }

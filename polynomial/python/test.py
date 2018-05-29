@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import sys
+from time import time
 
 def poly(x):
     mu = 10.0
@@ -15,11 +16,13 @@ def poly(x):
     return su
 
 if __name__ == "__main__":
+    # start = time()
     n = int(sys.argv[1])
     x = float(sys.argv[2])
     pu = 0.0
     for _ in range(0,n):
         pu += poly(x)
-    print(pu)
-
+    # print(pu)
+    # end = time()
+    # print (end - start)
 

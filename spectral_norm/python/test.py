@@ -3,7 +3,11 @@
 from array import array
 from math import sqrt
 from sys import argv
+from time import time
 import sys
+# import os
+# import psutil
+# process = psutil.Process(os.getpid())
 xrange = range
 
 def eval_A (i, j):
@@ -42,6 +46,7 @@ def eval_AtA_times_u (u, out, tmp):
     eval_At_times_u (tmp, out)
 
 def main():
+    # start = time()
     n = int(argv[1])
     u = array("d", [1]) * n
     v = array("d", [1]) * n
@@ -57,7 +62,10 @@ def main():
     for ue, ve in zip(u, v):
         vBv += ue * ve
         vv  += ve * ve
+    # end = time()
+    # print (end - start)
 
-    print("%0.9f" % (sqrt(vBv/vv)))
+    # print("%0.9f" % (sqrt(vBv/vv)))
+    # print(process.memory_info().rss)
 
 main()

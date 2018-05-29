@@ -5,8 +5,10 @@ package main
 import (
    "flag"
    "fmt"
-   "github.com/pkg/profile"
+   // "github.com/pkg/profile"
    "strconv"
+   // "time"
+   "runtime"
 )
 
 
@@ -29,13 +31,18 @@ func poly(x float64) float64 {
 
 func main() {
   // CPU profiling by default
-  defer profile.Start(profile.MemProfile).Stop()
-   flag.Parse()
-   n, _ := strconv.Atoi(flag.Arg(0))
-   x, _ := strconv.ParseFloat(flag.Arg(1), 64)
-   pu := 0.0
-   for i := 0; i < n; i++ {
-     pu += poly(x)
-   }
-   fmt.Printf("%f\n", pu)
+  // defer profile.Start(profile.MemProfile).Stop()
+  // start := time.Now()
+  flag.Parse()
+  n, _ := strconv.Atoi(flag.Arg(0))
+  x, _ := strconv.ParseFloat(flag.Arg(1), 64)
+  pu := 0.0
+  for i := 0; i < n; i++ {
+    pu += poly(x)
+  }
+  // fmt.Printf("%f\n", pu)
+	// fmt.Println(float32(time.Since(start)) / 1000000000.0)
+   var m runtime.MemStats
+   runtime.ReadMemStats(&m)
+   fmt.Println((m.Sys + m.TotalAlloc)/1024.0)
 }

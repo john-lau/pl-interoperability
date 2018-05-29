@@ -37,6 +37,6 @@ len_cpu = cpu_arr.length
 avg_cpu = total_cpu.to_f/len_cpu
 
 STDERR.puts "TIME: %.2fs" % [Time.now - t]
-STDERR.puts "MEM: min %fMb, max %fMb, avg %fMb" % [min_mem/1024.0, max_mem/1024.0, avg_mem/1024.0]
+STDERR.puts "MEM: min %fkB, max %fkB, avg %fkB" % [min_mem, max_mem, avg_mem]
 STDERR.puts "CPU: min %f, max %f, avg %f" % [min_cpu, max_cpu, avg_cpu]
 

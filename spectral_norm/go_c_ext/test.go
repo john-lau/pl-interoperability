@@ -12,15 +12,20 @@ import "C"
 import (
 	"flag"
 	"fmt"
-	"github.com/pkg/profile"
-	"math"
+	// "github.com/emilymaier/cmemory"
+	// "time"
+	// "github.com/pkg/profile"
+	// "math"
+	// "os"
+	"runtime"
 	"strconv"
 	"unsafe"
 )
 
 func main() {
 	// CPU profiling by default
-	defer profile.Start(profile.MemProfile).Stop()
+	// defer profile.Start(profile.MemProfile).Stop()
+	// cmemory.StartInstrumentation()
 	flag.Parse()
 	n := 10
 	if flag.NArg() > 0 {
@@ -48,5 +53,10 @@ func main() {
 		vBv += float64(u_slice[i]) * float64(v_slice[i])
 		vv += float64(v_slice[i]) * float64(v_slice[i])
 	}
-	fmt.Printf("%0.9f\n", math.Sqrt(vBv/vv))
+	// fmt.Printf("%0.9f\n", math.Sqrt(vBv/vv))
+	// stats := cmemory.MemoryAnalysis()
+	// fmt.Println(stats.TotalBytesAllocated)
+	 var m runtime.MemStats
+	 runtime.ReadMemStats(&m)
+  fmt.Println((m.Sys + m.TotalAlloc + 16000)/1024.0)
 }
