@@ -36,9 +36,14 @@ def main(argv):
 
         # print(lr)
         py_sort(lr, len(lr))
-        print("finished sorting array")
+        # print("finished sorting array")
+        time_taken = time.time() - start_time
 
-        print("--- %s seconds ---" % (time.time() - start_time))
+        with open("bubble_sort_python_25000.txt", "a") as text_file:
+            print("%s" % time_taken)
+            text_file.write(str(time_taken) + "\n")
+
+        
 
         # print(lr)
 

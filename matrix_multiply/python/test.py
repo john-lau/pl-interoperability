@@ -39,9 +39,13 @@ def main(argv):
     b = build_matrix(n)
 
     d = matmul(a, b)
-    print (d[n // 2][n // 2])
+    # print (d[n // 2][n // 2])
 
-    print("--- %s seconds ---" % (time.time() - start_time))
+    time_taken = time.time() - start_time
+
+    with open("mat_mul_python_1000.txt", "a") as text_file:
+        print("%s" % time_taken)
+        text_file.write(str(time_taken) + "\n")
 
 
 if __name__ == "__main__":

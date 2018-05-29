@@ -5,7 +5,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/pkg/profile"
 	"math/rand"
 	"strconv"
 	"time"
@@ -43,7 +42,7 @@ func rangeInt(min int, max int, n int) []int {
 func main() {
 	start := time.Now()
 	// CPU profiling by default
-	defer profile.Start(profile.MemProfile).Stop()
+	// defer profile.Start(profile.MemProfile).Stop()
 
 	// arrayzor := []int{1, 6, 2, 4, 9, 0, 5, 3, 7, 8}
 
@@ -56,9 +55,9 @@ func main() {
 
 	arrayzor := rangeInt(0, 1000, n)
 
-	fmt.Println("Unsorted array: ", arrayzor)
+	// fmt.Println("Unsorted array: ", arrayzor)
 	bubbleSort(arrayzor)
-	fmt.Println("Sorted array: ", arrayzor)
+	// fmt.Println("Sorted array: ", arrayzor)
 
 	fmt.Println(time.Since(start))
 }
