@@ -26,6 +26,6 @@ def main():
 
     # end = time()
     # print (end - start)
-    # print("%0.9f" % (sqrt(vBv/vv)))
+    print("%0.9f" % (sqrt(vBv/vv)))
 
 main()

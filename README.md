@@ -4,13 +4,13 @@ Comparing the interoperability of Golang with C/C++ and Python with C/C++
 ### Benchmarks to test
 - Calculate spectral-norm
 - Matrix Multiplication
-- polynomial computing
-- bubble sort
+- Polynomial computing
+- Bubble sort
 
 Benchmark these tests in: Go, CPython, CGo, CPython w/ C extensions and compare results.
-- time, memory, cpu
+- time, memory
 - linux ps command
-
+- Go "runtime" and "cmemory" libraries
 
 ### Golang
 Benefits of using Golang?

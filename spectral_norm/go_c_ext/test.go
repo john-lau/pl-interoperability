@@ -14,17 +14,14 @@ import (
 	"fmt"
 	// "github.com/emilymaier/cmemory"
 	// "time"
-	// "github.com/pkg/profile"
-	// "math"
+	"math"
 	// "os"
-	"runtime"
+	// "runtime"
 	"strconv"
 	"unsafe"
 )
 
 func main() {
-	// CPU profiling by default
-	// defer profile.Start(profile.MemProfile).Stop()
 	// cmemory.StartInstrumentation()
 	flag.Parse()
 	n := 10
@@ -53,10 +50,10 @@ func main() {
 		vBv += float64(u_slice[i]) * float64(v_slice[i])
 		vv += float64(v_slice[i]) * float64(v_slice[i])
 	}
-	// fmt.Printf("%0.9f\n", math.Sqrt(vBv/vv))
+	fmt.Printf("%0.9f\n", math.Sqrt(vBv/vv))
 	// stats := cmemory.MemoryAnalysis()
 	// fmt.Println(stats.TotalBytesAllocated)
-	 var m runtime.MemStats
-	 runtime.ReadMemStats(&m)
-  fmt.Println((m.Sys + m.TotalAlloc + 16000)/1024.0)
+	 // var m runtime.MemStats
+	 // runtime.ReadMemStats(&m)
+  // fmt.Println((m.Sys + m.TotalAlloc + 16000)/1024.0)
 }

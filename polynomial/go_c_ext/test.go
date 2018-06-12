@@ -11,16 +11,13 @@ import "C"
 import (
 	"flag"
 	"fmt"
-	// "github.com/pkg/profile"
 	// "github.com/emilymaier/cmemory"
 	"strconv"
 	// "time"
-  "runtime"
+  // "runtime"
 )
 
 func main() {
-	// CPU profiling by default
-	// defer profile.Start(profile.MemProfile).Stop()
 	// start := time.Now()
 	// cmemory.StartInstrumentation()
 	flag.Parse()
@@ -32,10 +29,10 @@ func main() {
 		pu += float64(C.poly(x_c))
 	}
 	// fmt.Println(float32(time.Since(start)) / 1000000000.0)
-	// fmt.Printf("%f\n", pu)
+	fmt.Printf("%f\n", pu)
 	// stats := cmemory.MemoryAnalysis()
 	// fmt.Println(stats.TotalBytesAllocated)
-  var m runtime.MemStats
-  runtime.ReadMemStats(&m)
-  fmt.Println((m.Sys + m.TotalAlloc + 16000)/1024.0)
+  // var m runtime.MemStats
+  // runtime.ReadMemStats(&m)
+  // fmt.Println((m.Sys + m.TotalAlloc + 16000)/1024.0)
 }

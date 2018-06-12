@@ -22,7 +22,7 @@ if __name__ == "__main__":
     pu = 0.0
     for _ in range(0,n):
         pu += poly(x)
-    # print(pu)
+    print(pu)
     # end = time()
     # print (end - start)
 

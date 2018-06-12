@@ -5,11 +5,10 @@ package main
 import (
    "flag"
    "fmt"
-   // "github.com/pkg/profile"
-   // "math"
+   "math"
    "strconv"
    // "time"
-   "runtime"
+   // "runtime"
 )
 
 // var n = flag.Int("n", 2000, "count")
@@ -58,8 +57,6 @@ func bToMb(b uint64) uint64 {
 }
 
 func main() {
-   // CPU profiling by default
-   // defer profile.Start(profile.MemProfile).Stop()
    // var m runtime.MemStats
    // runtime.ReadMemStats(&m)
    // start := time.Now()
@@ -69,8 +66,7 @@ func main() {
    }
 
    N := n
-   u := make(Vec, N)
-   for i := 0; i < N; i++ {
+   u := make(Vec, N) for i := 0; i < N; i++ {
       u[i] = 1
    }
    v := make(Vec, N)
@@ -85,8 +81,8 @@ func main() {
       // PrintMemUsage()
    }
    // fmt.Println(float32(time.Since(start))/1000000000.0)
-   // fmt.Printf("%0.9f\n", math.Sqrt(vBv/vv))
-   var m runtime.MemStats
-   runtime.ReadMemStats(&m)
-   fmt.Println((m.Sys + m.TotalAlloc)/1024.0)
+   fmt.Printf("%0.9f\n", math.Sqrt(vBv/vv))
+   // var m runtime.MemStats
+   // runtime.ReadMemStats(&m)
+   // fmt.Println((m.Sys + m.TotalAlloc)/1024.0)
 }
