@@ -5,8 +5,9 @@ package main
 import (
 	"fmt"
 	"flag"
+	"runtime"
 	"strconv"
-	"time"
+	// "time"
 )
 
 func matgen(n int) [][]float64 {
@@ -47,7 +48,7 @@ func matmul(a [][]float64, b [][]float64){
 }
 
 func main() {
-	start := time.Now()
+	// start := time.Now()
 	// CPU profiling by default
 	// defer profile.Start(profile.MemProfile).Stop()
 	n := int(100)
@@ -60,6 +61,9 @@ func main() {
 	matmul(a, b)
 	// fmt.Printf("%f\n", x[n/2][n/2])
 
-	fmt.Println(time.Since(start))
+	// fmt.Println(time.Since(start))
 
+	var m runtime.MemStats
+	runtime.ReadMemStats(&m)
+	fmt.Println((m.Sys + m.TotalAlloc)/1024.0)
 }

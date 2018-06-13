@@ -12,9 +12,11 @@ import "C"
 import (
 	"flag"
 	"fmt"
+	"github.com/emilymaier/cmemory"
 	"math/rand"
+	// "runtime"
 	"strconv"
-	"time"
+	// "time"
 	"unsafe"
 )
 
@@ -48,9 +50,8 @@ func rangeInt(min int, max int, n int) []int {
 }
 
 func main() {
-	start := time.Now()
-	// CPU profiling by default
-	// defer profile.Start(profile.MemProfile).Stop()
+	cmemory.StartInstrumentation()
+	// start := time.Now()
 	// arrayzor := []int{1, 6, 2, 4, 9, 0, 5, 3, 7, 8}
 
 	//generate random array
@@ -81,5 +82,12 @@ func main() {
 	// bubbleSort(arrayzor)
 	// fmt.Println("Sorted array: ", arraySlice)
 
-	fmt.Println(time.Since(start))
+	// fmt.Println(time.Since(start))
+
+	stats := cmemory.MemoryAnalysis()
+	fmt.Println(stats.TotalBytesAllocated)
+
+	// var m runtime.MemStats
+	// runtime.ReadMemStats(&m)
+	// fmt.Println((m.Sys + m.TotalAlloc) / 1024.0)
 }

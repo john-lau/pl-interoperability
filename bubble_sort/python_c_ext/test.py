@@ -37,9 +37,9 @@ def main(argv):
 
         time_taken = time.time() - start_time
 
-        with open("bubble_sort_python_c_ext_25000.txt", "a") as text_file:
-            print("%s" % time_taken)
-            text_file.write(str(time_taken) + "\n")
+        # with open("bubble_sort_python_c_ext_25000.txt", "a") as text_file:
+        #     print("%s" % time_taken)
+        #     text_file.write(str(time_taken) + "\n")
 
 if __name__ == "__main__":
     main(sys.argv)

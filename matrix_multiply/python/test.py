@@ -43,9 +43,9 @@ def main(argv):
 
     time_taken = time.time() - start_time
 
-    with open("mat_mul_python_1000.txt", "a") as text_file:
-        print("%s" % time_taken)
-        text_file.write(str(time_taken) + "\n")
+    # with open("mat_mul_python_1000.txt", "a") as text_file:
+    #     print("%s" % time_taken)
+    #     text_file.write(str(time_taken) + "\n")
 
 
 if __name__ == "__main__":

@@ -12,8 +12,10 @@ import "C"
 import (
 	"flag"
 	"fmt"
+	"github.com/emilymaier/cmemory"
+	// "runtime"
 	"strconv"
-	"time"
+	// "time"
 	"unsafe"
 )
 
@@ -55,7 +57,8 @@ func matmul(a [][]float64, b [][]float64) [][]float64 {
 }
 
 func main() {
-	start := time.Now()
+	cmemory.StartInstrumentation()
+	// start := time.Now()
 
 	// CPU profiling by default
 	// defer profile.Start(profile.MemProfile).Stop()
@@ -101,6 +104,13 @@ func main() {
 
 	// fmt.Printf("%f\n", result)
 
-	fmt.Println(time.Since(start))
+	// fmt.Println(time.Since(start))
+
+	stats := cmemory.MemoryAnalysis()
+	fmt.Println((stats.TotalBytesAllocated / 1024.0))
+
+	// var m runtime.MemStats
+	// runtime.ReadMemStats(&m)
+	// fmt.Println((m.Sys + m.TotalAlloc) / 1024.0)
 
 }
