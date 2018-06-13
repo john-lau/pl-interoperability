@@ -29,8 +29,11 @@ def main(argv):
         # Call C function here
         testmodule.c_sort(sample_size, lr)
 
-        print("finished sorting array")
+
         py_sort(lr, len(lr))
+        print("finished sorting array")
+        print(lr)
+
         
         time_taken = time.time() - start_time
 
