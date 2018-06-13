@@ -22,7 +22,7 @@ float **matrix_init(int n) {
 }
 
 
-void matmul(int n, float *const *a, float *const *b) {
+float matmul(int n, float *const *a, float *const *b) {
 	int i, j, k;
 	float **m, **c;
 
@@ -42,9 +42,10 @@ void matmul(int n, float *const *a, float *const *b) {
 			q[j] = t;
 		}
 	}
+
 	mm_destroy(n, c);
 	
 	float result = m[n/2][n/2];
-	// return result;
+	return result;
 }
 

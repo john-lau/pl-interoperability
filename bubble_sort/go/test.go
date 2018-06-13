@@ -6,7 +6,7 @@ import (
 	"flag"
 	"fmt"
 	"math/rand"
-	"runtime"
+	// "runtime"
 	"strconv"
 	// "time"
 )
@@ -42,10 +42,6 @@ func rangeInt(min int, max int, n int) []int {
 
 func main() {
 	// start := time.Now()
-	// CPU profiling by default
-	// defer profile.Start(profile.MemProfile).Stop()
-
-	// arrayzor := []int{1, 6, 2, 4, 9, 0, 5, 3, 7, 8}
 
 	//generate random array
 	n := int(100)
@@ -56,13 +52,13 @@ func main() {
 
 	arrayzor := rangeInt(0, 1000, n)
 
-	// fmt.Println("Unsorted array: ", arrayzor)
+	fmt.Println("Unsorted array: ", arrayzor)
 	bubbleSort(arrayzor)
-	// fmt.Println("Sorted array: ", arrayzor)
+	fmt.Println("Sorted array: ", arrayzor)
 
 	// fmt.Println(time.Since(start))
 
-	var m runtime.MemStats
-	runtime.ReadMemStats(&m)
-	fmt.Println((m.Sys + m.TotalAlloc)/1024.0)
+	// var m runtime.MemStats
+	// runtime.ReadMemStats(&m)
+	// fmt.Println((m.Sys + m.TotalAlloc)/1024.0)
 }

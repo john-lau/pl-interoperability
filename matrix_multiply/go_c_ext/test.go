@@ -12,7 +12,7 @@ import "C"
 import (
 	"flag"
 	"fmt"
-	"github.com/emilymaier/cmemory"
+	// "github.com/emilymaier/cmemory"
 	// "runtime"
 	"strconv"
 	// "time"
@@ -31,37 +31,13 @@ func matgen(n int) [][]float64 {
 	return a
 }
 
-func matmul(a [][]float64, b [][]float64) [][]float64 {
-	m := len(a)
-	n := len(a[0])
-	p := len(b[0])
-	x := make([][]float64, m)
-	c := make([][]float64, p)
-	for i := 0; i < p; i++ { //transpose b
-		c[i] = make([]float64, n)
-		for j := 0; j < n; j++ {
-			c[i][j] = b[j][i]
-		}
-	}
-	for i, am := range a { //do the multiplication, store values in x
-		x[i] = make([]float64, p)
-		for j, cm := range c {
-			s := float64(0)
-			for k, m := range am {
-				s += m * cm[k]
-			}
-			x[i][j] = s
-		}
-	}
-	return x
-}
-
 func main() {
-	cmemory.StartInstrumentation()
+	// cmemory.StartInstrumentation()
 	// start := time.Now()
 
 	// CPU profiling by default
 	// defer profile.Start(profile.MemProfile).Stop()
+
 	n := int(100)
 	flag.Parse()
 	if flag.NArg() > 0 {
@@ -100,14 +76,14 @@ func main() {
 		}
 	}
 
-	C.matmul(N, (&a_matrix[0]), (&b_matrix[0]))
+	result := C.matmul(N, (&a_matrix[0]), (&b_matrix[0]))
 
-	// fmt.Printf("%f\n", result)
+	fmt.Printf("%f\n", result)
 
 	// fmt.Println(time.Since(start))
 
-	stats := cmemory.MemoryAnalysis()
-	fmt.Println((stats.TotalBytesAllocated / 1024.0))
+	// stats := cmemory.MemoryAnalysis()
+	// fmt.Println((stats.TotalBytesAllocated / 1024.0))
 
 	// var m runtime.MemStats
 	// runtime.ReadMemStats(&m)

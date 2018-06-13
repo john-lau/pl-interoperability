@@ -12,7 +12,7 @@ import "C"
 import (
 	"flag"
 	"fmt"
-	"github.com/emilymaier/cmemory"
+	// "github.com/emilymaier/cmemory"
 	"math/rand"
 	// "runtime"
 	"strconv"
@@ -50,9 +50,8 @@ func rangeInt(min int, max int, n int) []int {
 }
 
 func main() {
-	cmemory.StartInstrumentation()
+	// cmemory.StartInstrumentation()
 	// start := time.Now()
-	// arrayzor := []int{1, 6, 2, 4, 9, 0, 5, 3, 7, 8}
 
 	//generate random array
 	n := int(100)
@@ -65,7 +64,7 @@ func main() {
 
 	goArray := rangeInt(0, 1000, n)
 
-	// fmt.Println("Unsorted array: ", goArray)
+	fmt.Println("Unsorted array: ", goArray)
 
 	// Create C array from golang array
 	cArray := (C.malloc(C.size_t(N) * C.size_t(unsafe.Sizeof(C.int(0)))))
@@ -79,13 +78,12 @@ func main() {
 	// Call C function now.
 	C.bubble_sort((*C.int)(cArray), N)
 
-	// bubbleSort(arrayzor)
-	// fmt.Println("Sorted array: ", arraySlice)
+	fmt.Println("Sorted array: ", arraySlice)
 
 	// fmt.Println(time.Since(start))
 
-	stats := cmemory.MemoryAnalysis()
-	fmt.Println(stats.TotalBytesAllocated)
+	// stats := cmemory.MemoryAnalysis()
+	// fmt.Println((stats.TotalBytesAllocated / 1024.0))
 
 	// var m runtime.MemStats
 	// runtime.ReadMemStats(&m)

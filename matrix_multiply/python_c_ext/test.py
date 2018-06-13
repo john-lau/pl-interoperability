@@ -38,20 +38,14 @@ def main(argv):
 
     a = build_matrix(n)
     b = build_matrix(n)
-    # print(a)
-    # print(b)
 
     result = testmodule.matmul(n, a, b)
 
-    # print(result)
+    print(result)
 
-    # print("--- %s seconds ---" % (time.time() - start_time))
+    # time_taken = time.time() - start_time
+    # print(time_taken)
 
-    time_taken = time.time() - start_time
-
-    # with open("mat_mul_python_c_1000.txt", "a") as text_file:
-    #     print("%s" % time_taken)
-    #     text_file.write(str(time_taken) + "\n")
 
 if __name__ == "__main__":
     main(sys.argv)

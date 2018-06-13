@@ -24,22 +24,16 @@ def main(argv):
 
         lr= random.sample(range(10000000),sample_size)
 
-        # lr = [3,4,7,1,2,0,18,14]
-
-        # for item in lr:
-        #     print(item)
+        print(lr)
 
         # Call C function here
         testmodule.c_sort(sample_size, lr)
 
-        # py_sort(lr, len(lr))
-        # print("finished sorting array")
-
+        print("finished sorting array")
+        py_sort(lr, len(lr))
+        
         time_taken = time.time() - start_time
 
-        # with open("bubble_sort_python_c_ext_25000.txt", "a") as text_file:
-        #     print("%s" % time_taken)
-        #     text_file.write(str(time_taken) + "\n")
 
 if __name__ == "__main__":
     main(sys.argv)
