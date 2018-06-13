@@ -66,6 +66,6 @@ def main():
     # print (end - start)
 
     print("%0.9f" % (sqrt(vBv/vv)))
-    # print(process.memory_info().rss)
+
 
 main()
